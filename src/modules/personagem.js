@@ -1,7 +1,7 @@
 export class Personagem {
     nome
-    vida = 100
-    mana = 100
+    vida = 100 //valor fixo, já que todos os personagens comessam com vida completa
+    mana = 100 //valor fixo, já que todos os personagens comessam com mana completa
     level
     tipo
     descricao

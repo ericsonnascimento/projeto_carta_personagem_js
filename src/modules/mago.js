@@ -1,6 +1,6 @@
 import { Personagem } from "./personagem.js"
 
-export class Mago extends Personagem { //hestamos herdando alguns atributos da classe "Personagem" (HERANÇA)
+export class Mago extends Personagem { //Estamos herdando alguns atributos da classe "Personagem" (HERANÇA)
     elementoMagico
     levelMagico
     inteligencia
