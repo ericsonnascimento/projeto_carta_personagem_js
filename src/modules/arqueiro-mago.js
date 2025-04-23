@@ -5,7 +5,8 @@ import { Personagem } from "./personagem.js";
 export class ArqueiroMago extends Personagem {
     ladoArqueiro
     ladoMago
-    tipo = 'ArqueiroMago'
+    static tipo = 'ArqueiroMago' //transformando uma variável em static já que ela permanecerá assim
+    static descricao = 'Detentor de lancas e flechas mágicas!'
 
     constructor(nome, level, destreza, elementoMago, levelMago, inteligencia) {
         super(nome, level)

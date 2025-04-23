@@ -1,9 +1,16 @@
+import { Personagem } from "../modules/personagem.js"
+import { mostrarModal } from "./modal.js"
+
 export class PersonagemView{
     personagens
+    personagensSelecionados
 
     constructor(personagens) {
         this.ulPersonagens = document.querySelector('ul#personagens')
         this.personagens = personagens
+        this.personagensSelecionados = [] //vamos gradar as cartas selecionadas nesse array
+        this.escutarEventoDuelo() //estamos chamando a função escutarEventoDuelo que está logo a baixo
+
     }
     
     render() {
@@ -16,11 +23,11 @@ export class PersonagemView{
     
     criaPersonagem = (personagem) => {
         const personagemLI = document.createElement('li')
-        personagemLI.classList.add('personagem', personagem.tipo)
+        personagemLI.classList.add('personagem', personagem.constructor.tipo)
     
-        //const estaSelecionado = this.personagensSelecionados.indexOf(personagem) !== -1 //sintaxe para quando encontra no array
+        const estaSelecionado = this.personagensSelecionados.indexOf(personagem) !== -1 //sintaxe para quando encontra no array
     
-        //if (estaSelecionado) personagemLI.classList.add('selecionado')
+        if (estaSelecionado) personagemLI.classList.add('selecionado')
     
         personagemLI.innerHTML =
     
@@ -37,14 +44,14 @@ export class PersonagemView{
             <div class="container-imagem">
                 <div class="imagem"></div>
                 <div class="container-tipo">
-                    <h2 class="tipo">${personagem.tipo}</h2>
+                    <h2 class="tipo">${personagem.constructor.tipo}</h2>
                 </div>
             </div>
             <div class="container-nome">
                 <h3 class="nome">${personagem.nome}</h3>
             </div>
             <div class="container-descricao">
-                <p class="descricao"></p>
+                <p class="descricao">${personagem.constructor.descricao}</p>
             </div>
         </div>
         <div class="container-inferior">
@@ -67,8 +74,8 @@ export class PersonagemView{
             this.render()
         }*/
     
-    
-        /*personagemLI.onclick = () => {
+        //estafunção torna a carta clicável, aplicando "clicar para adicionar" e "clicar para remover"
+        personagemLI.onclick = () => {
             const jaTem2Selecionados = this.personagensSelecionados.length === 2
             if (!jaTem2Selecionados || estaSelecionado) {
                 personagemLI.classList.toggle('selecionado')
@@ -77,39 +84,44 @@ export class PersonagemView{
     
                 this.removeSelecao(personagem)
             }
-        }*/
+        }
     
         return personagemLI
     }
     
+    //estas funcões estão utilizando o nosso atributo "personagensSelecionados" ou seja, tudo que estiver no array
     
-    /*adicionaSelecao = (personagem) => {
+    //aqui estamos ADICIONANDO a carta selecionada ao array "personagensSelecionados"
+    adicionaSelecao = (personagem) => {
         this.personagensSelecionados.push(personagem)
         this.render()
     }
     
-    
+    //aqui estamos REMOVENDO a carta selecionada ao array "personagensSelecionados"
     removeSelecao = (personagem) => {
         const indexDoPersonagemNoArray = this.personagensSelecionados.indexOf(personagem)
         this.personagensSelecionados.splice(indexDoPersonagemNoArray, 1)
         this.render()
     }
     
+    //aqui estamos ADICIONANDO o evento de "click" ao botão DUELAR
     escutarEventoDuelo() {
         const botaoDuelar = document.querySelector('.botao-duelar')
     
         botaoDuelar.addEventListener('click', () => {
             if (this.personagensSelecionados.length < 2) return mostrarModal('Selecione 2 personagens')
     
+            //aqui estamos verificando o vencedor selecionando os campos do array [0] e [1], que são os únicos existentes.
             const resultadoDuelo = Personagem.verificarVencedor(this.personagensSelecionados[0], this.personagensSelecionados[1])
     
+            //ao final é chamado a função "mostrarModal" do arquivo components/modal.js
             mostrarModal(resultadoDuelo)
     
             this.personagensSelecionados.splice(0, this.personagensSelecionados.length)
     
             this.render()
         })
-    }*/
+    }
 }
 
 
