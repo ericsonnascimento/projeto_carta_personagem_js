@@ -2,17 +2,37 @@ export class Personagem {
     nome
     vida = 100 //variável que futuramente não será fixa
     mana = 100 //variável que futuramente não será fixa
-    level
+    #level //encapsulando a variável "level" tornando inacessível externamente
     tipo
     descricao
 
-    constructor(nome, level) {
+    constructor(nome) {
         this.nome = nome
-        this.level = level
+        this.#level = 1
+    }
+
+    aumentarLevel() {
+        this.level += 1
+    }
+
+    diminuirLevel() {
+        this.level -= 1
+    }
+
+    //método "get" associa a propriedade de um objeto a uma função, a função get é chamada quando a propriedade é acessada.
+    //então é habilitado o acesso externo ao atributo "level" automaticamente. 
+    get level() {
+        return this.#level
+    }
+
+    set level(novoLevel) {
+        if (novoLevel >= 1 && novoLevel <= 10) {
+            this.#level = novoLevel
+        }
     }
 
     obterInsignia() {
-        if(this.level >= 5){
+        if(this.#level >= 5){
             return `Implacável ${this.constructor.tipo}`
         }
         return `${this.constructor.tipo} iniciante` 

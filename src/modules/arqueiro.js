@@ -5,8 +5,8 @@ export class Arqueiro extends Personagem {
     static tipo = 'Arqueiro' //transformando uma variável em static já que ela permanecerá assim
     static descricao = 'Você tem o meu arco!'
 
-    constructor(nome, level, destreza) {
-        super(nome, level)
+    constructor(nome, destreza) {
+        super(nome)
         this.destreza = destreza
     }
 

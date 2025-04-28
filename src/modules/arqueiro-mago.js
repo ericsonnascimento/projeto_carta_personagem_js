@@ -8,10 +8,10 @@ export class ArqueiroMago extends Personagem {
     static tipo = 'ArqueiroMago' //transformando uma variável em static já que ela permanecerá assim
     static descricao = 'Detentor de lancas e flechas mágicas!'
 
-    constructor(nome, level, destreza, elementoMago, levelMago, inteligencia) {
-        super(nome, level)
-        this.ladoArqueiro = new Arqueiro(nome, level, destreza) //instanciando a classe Arqueiro na variavel ladoArqueiro
-        this.ladoMago = new Mago(nome, level, elementoMago, levelMago, inteligencia) //instanciando a classe Mago na variavel ladoMago
+    constructor(nome, destreza, elementoMago, levelMago, inteligencia) {
+        super(nome)
+        this.ladoArqueiro = new Arqueiro(nome, destreza) //instanciando a classe Arqueiro na variavel ladoArqueiro
+        this.ladoMago = new Mago(nome, elementoMago, levelMago, inteligencia) //instanciando a classe Mago na variavel ladoMago
     }
 
     //aqui estamos importando as regras das obterInsignia das classe Arqueiro e Mago

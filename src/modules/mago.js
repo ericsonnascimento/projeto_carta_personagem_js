@@ -7,8 +7,8 @@ export class Mago extends Personagem { //Estamos herdando alguns atributos da cl
     static tipo = 'Mago' //transformando uma variável em static já que ela permanecerá assim
     static descricao = 'O mago é implacável!'
 
-    constructor (nome, level, elementoMagico, levelMagico, inteligencia) {
-        super(nome, level) //construindo os atributos da classe pai
+    constructor (nome, elementoMagico, levelMagico, inteligencia) {
+        super(nome) //construindo os atributos da classe pai
         this.elementoMagico = elementoMagico
         this.levelMagico = levelMagico
         this.inteligencia = inteligencia

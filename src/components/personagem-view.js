@@ -62,8 +62,9 @@ export class PersonagemView{
             <h4 class="vida">${personagem.vida}</h4>
         </div>
         `
-    
-        /*const containerLevel = personagemLI.querySelector('.level')
+        //implementação da lógica dos métodos "diminuirLevel" e "aumentarLevel" e chamando a função "render()" 
+        //para atualizar o novo lével na página.
+        const containerLevel = personagemLI.querySelector('.level')
         containerLevel.onclick = (evt) => {
             evt.stopPropagation()
     
@@ -72,7 +73,7 @@ export class PersonagemView{
             if (evt.target.classList.contains('aumentar-level')) personagem.aumentarLevel()
     
             this.render()
-        }*/
+        }
     
         //estafunção torna a carta clicável, aplicando "clicar para adicionar" e "clicar para remover"
         personagemLI.onclick = () => {
